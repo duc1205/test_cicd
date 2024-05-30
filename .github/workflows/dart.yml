@@ -13,10 +13,19 @@ jobs:
     name: Build & Release
     runs-on: macos-latest
     steps:
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: ${{ steps.config.outputs.JAVA_VERSION }}
+          cache: "gradle"
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.6'
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+          bundler-cache: true
       - run: flutter clean
       - run: flutter pub get
       - run: flutter test
