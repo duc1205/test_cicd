@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: "temurin"
-          java-version: ${{ steps.config.outputs.JAVA_VERSION }}
+          java-version: "22.x"
           cache: "gradle"
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
